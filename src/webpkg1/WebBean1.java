@@ -27,6 +27,7 @@ public class WebBean1 implements Serializable {
 	
 	@PostConstruct
 	public void init() {
+		System.out.println("[WebBean1] - init()");
 		Product product;
 		List<Product> products = productFacade.findAll();
 		if (products == null || products.isEmpty()) {
@@ -38,8 +39,9 @@ public class WebBean1 implements Serializable {
 	}
 	
 	public void addSimilarProduct() {
-		Product currentProduct = productFacade.find(new Integer(1));
-		Product similarProduct = productFacade.find(new Integer(2));
+		List<Product> products = productFacade.findAll();
+		Product currentProduct = products.get(0);
+		Product similarProduct = products.get(1);
 		productFacade.addSimilarProduct(currentProduct, similarProduct);
 	}
 	
