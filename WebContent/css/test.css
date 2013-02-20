@@ -1,0 +1,5 @@
+@CHARSET "ISO-8859-1";
+table.bordered {
+	width: 100%;
+	border: 1px;
+}
