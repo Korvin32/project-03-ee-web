@@ -45,6 +45,11 @@ public class WebBean1 implements Serializable {
 		productFacade.addSimilarProduct(currentProduct, similarProduct);
 	}
 	
+	public void addItSelf() {
+		Product product = productFacade.find(new Integer(3));
+		productFacade.addSimilarProduct(product, product);
+	}
+	
 	public void action() {
 		System.out.println("action called!");
 	}

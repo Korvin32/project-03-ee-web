@@ -14,12 +14,9 @@
        <h:form id="form">
 		<ace:panel header="Welcome to ICEfaces">
 			<h:panelGrid columns="1">
-				<ace:linkButton id="linkButton1" value="ICEfaces Overview" href="http://wiki.icesoft.org/display/ICE/ICEfaces+Overview"></ace:linkButton>
-				<ace:linkButton id="linkButton2" value="General Documentation" href="http://wiki.icesoft.org/display/ICE/ICEfaces+Documentation"></ace:linkButton>
-				<ace:linkButton id="linkButton4" value="Tutorials" href="http://www.icesoft.org/community/tutorials-samples.jsf"></ace:linkButton>
-				<ace:linkButton id="linkButton5" value="ACE components" href="http://wiki.icesoft.org/display/ICE/ACE+Components"></ace:linkButton>
 				<ace:linkButton id="callBean" value="Call Web Bean 1" action="#{webBean1.action}"></ace:linkButton>
 				<ace:linkButton id="addSimilarity" value="Add similar Product" action="#{webBean1.addSimilarProduct}"></ace:linkButton>
+				<ace:linkButton id="addSelf" value="Add itself" action="#{webBean1.addItSelf}"></ace:linkButton>
 			</h:panelGrid>
 		</ace:panel>	
       </h:form>         
