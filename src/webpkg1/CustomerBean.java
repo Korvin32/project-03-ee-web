@@ -46,6 +46,14 @@ public class CustomerBean {
 		}
 	}
 
+	public WebBean1 getWebBean1() {
+		return webBean1;
+	}
+
+	public void setWebBean1(WebBean1 webBean1) {
+		this.webBean1 = webBean1;
+	}
+
 	public String getRePassword() {
 		return rePassword;
 	}
