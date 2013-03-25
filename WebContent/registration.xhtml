@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:icecore="http://www.icefaces.org/icefaces/core"  xmlns:ace="http://www.icefaces.org/icefaces/components"   xmlns:ice="http://www.icesoft.com/icefaces/component" 
+	>
+    <h:head>
+        <title>Customer Registration</title>
+        <link rel="stylesheet" type="text/css" href="./xmlhttp/css/rime/rime.css"/>
+    </h:head>
+<!-- 
+
+    private String street;
+    private String house;
+    private String appartment;
+    private String zipCode;
+    private String city;
+    private String country;
+
+ -->
+
+    <h:body styleClass="ice-skin-rime">     
+       <h:form id="form">
+		<ace:panel header="Welcome to Registration: Customer Datas">
+			<h:panelGrid columns="2">
+				<ice:outputLabel for="login" value="Login"/>
+				<ice:inputText id ="login" value="#{customer.customer.login}" required="true"/>
+				<ice:outputLabel for="password" value="Password"/>
+				<ice:inputSecret id ="password" value="#{customer.customer.password}" required="true" redisplay="true"/>
+				<ice:outputLabel for="re-password" value="Re-Enter Password"/>
+				<ice:inputSecret id ="re-password" value="#{customer.rePassword}" required="true" redisplay="true"/>
+				<ice:outputLabel for="phone" value="Phone"/>
+				<ice:inputText id ="phone" value="#{customer.customer.phone}" required="true"/>
+				<ice:outputLabel for="skype" value="Skype"/>
+				<ice:inputText id ="skype" value="#{customer.customer.skype}" required="true"/>
+			</h:panelGrid>
+		</ace:panel>
+		<ace:panel header="Welcome to Registration: Customer Address">
+			<h:panelGrid columns="2">
+				<ice:outputLabel for="street" value="Street"/>
+				<ice:inputText id ="street" value="#{customer.address.street}" required="true"/>
+				<ice:outputLabel for="house" value="House"/>
+				<ice:inputText id ="house" value="#{customer.address.house}" required="true"/>
+				<ice:outputLabel for="appartment" value="Appartment"/>
+				<ice:inputText id ="appartment" value="#{customer.address.appartment}" required="true"/>
+				<ice:outputLabel for="zipCode" value="Zip Code"/>
+				<ice:inputText id ="zipCode" value="#{customer.address.zipCode}" required="true"/>
+				<ice:outputLabel for="city" value="City"/>
+				<ice:inputText id ="city" value="#{customer.address.city}" required="true"/>
+				<ice:outputLabel for="country" value="Country"/>
+				<ice:inputText id ="country" value="#{customer.address.country}" required="true"/>
+			</h:panelGrid>
+		</ace:panel>
+		<ace:panel header="Register">
+			<ace:linkButton id="register" value="Register" action="#{customer.register}"></ace:linkButton>
+		</ace:panel>	
+      </h:form>         
+    </h:body>
+</html>
