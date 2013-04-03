@@ -1,6 +1,9 @@
 package webpkg1;
 
+import java.io.Serializable;
+
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
@@ -8,43 +11,39 @@ import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
 import session.CustomerManager;
-import entity.Address;
 import entity.Customer;
 
-@ManagedBean(name="customer")
+@ManagedBean(name="login")
 @RequestScoped
-public class CustomerBean {
-	
+public class LoginBean implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+
 	@EJB
 	private CustomerManager customerManager;
-
+	
 	private HttpSession session;
 	
 	@ManagedProperty(value="#{webBean1}")
 	private WebBean1 webBean1;
+
+	private String login;
+	private String password;
 	
-	private String rePassword;
-	private Customer customer;
-	private Address address;
-	
-	public CustomerBean() {
-		customer = new Customer();
-		address = new Address();
+	public LoginBean() {
 		session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
 	}
 	
-	public String register() {
-		if (!customer.getPassword().equals(rePassword)) {
-			return null;
-		}
-		int customerId = customerManager.registerCustomer(customer, address);
-		if (customerId > 0) {
+	public String doLogin() {
+		Customer customer = customerManager.checkLoginData(login, password);
+		if (customer != null) {
 			session.setAttribute("customer", customer);
 			webBean1.setLoggedIn(true);
 			webBean1.setLoggedinCustomer(customer);
 			return "index";
 		} else {
-			return "error";
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "No such User or wrong password entered! Please try again", null));
+			return null;
 		}
 	}
 
@@ -56,27 +55,21 @@ public class CustomerBean {
 		this.webBean1 = webBean1;
 	}
 
-	public String getRePassword() {
-		return rePassword;
+	public String getLogin() {
+		return login;
 	}
 
-	public void setRePassword(String rePassword) {
-		this.rePassword = rePassword;
+	public void setLogin(String login) {
+		this.login = login;
 	}
 
-	public Customer getCustomer() {
-		return customer;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
+	public void setPassword(String password) {
+		this.password = password;
 	}
-
-	public Address getAddress() {
-		return address;
-	}
-
-	public void setAddress(Address address) {
-		this.address = address;
-	}
+	
+	
 }

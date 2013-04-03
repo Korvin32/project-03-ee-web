@@ -7,13 +7,22 @@
 	xmlns:icecore="http://www.icefaces.org/icefaces/core"  xmlns:ace="http://www.icefaces.org/icefaces/components"   xmlns:ice="http://www.icesoft.com/icefaces/component" 
 	>
     <h:head>
-        <title>Customer Registration: Registration Error!</title>
+        <title>ICEfaces</title>
         <link rel="stylesheet" type="text/css" href="./xmlhttp/css/rime/rime.css"/>
     </h:head>
     <h:body styleClass="ice-skin-rime">     
        <h:form id="form">
-		<ace:panel header="Error!">
-			<h2>Error is occurred!</h2>
+		<ace:panel header="Welcome to ICEfaces: Login">
+			<h:panelGrid columns="2">
+			
+				<ice:outputLabel for="login"    value="Login"/>
+				<ice:inputText   id ="login"    value="#{login.login}"    required="true"/>
+				<ice:outputLabel for="password" value="Password"/>
+				<ice:inputSecret id ="password" value="#{login.password}" required="true" redisplay="true"/>
+			
+				<ace:linkButton id="doLogin" value="Login" action="#{login.doLogin}"></ace:linkButton>
+				<ace:linkButton id="back" value="Back" action="index" immediate="true"></ace:linkButton>
+			</h:panelGrid>
 		</ace:panel>
       </h:form>         
     </h:body>

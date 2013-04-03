@@ -7,8 +7,10 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 import session.ProductFacade;
+import entity.Customer;
 import entity.Product;
 
 @ManagedBean
@@ -20,6 +22,9 @@ public class WebBean1 implements Serializable {
 	@EJB
 	private ProductFacade productFacade;
 	
+	private boolean loggedIn = false;
+	
+	private Customer loggedinCustomer;
 	
 	public WebBean1() {
 		System.out.println("Stateless Session Bean 'WebBean1' - constructed!");
@@ -38,6 +43,10 @@ public class WebBean1 implements Serializable {
 		}
 	}
 	
+	public void logout() {
+		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+	}
+	
 	public void addSimilarProduct() {
 		List<Product> products = productFacade.findAll();
 		Product currentProduct = products.get(0);
@@ -52,6 +61,22 @@ public class WebBean1 implements Serializable {
 	
 	public void action() {
 		System.out.println("action called!");
+	}
+
+	public boolean isLoggedIn() {
+		return loggedIn;
+	}
+
+	public void setLoggedIn(boolean isLoggedIn) {
+		this.loggedIn = isLoggedIn;
+	}
+
+	public Customer getLoggedinCustomer() {
+		return loggedinCustomer;
+	}
+
+	public void setLoggedinCustomer(Customer loggedinCustomer) {
+		this.loggedinCustomer = loggedinCustomer;
 	}
 	
 }

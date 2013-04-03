@@ -19,9 +19,19 @@
 				<ace:linkButton id="addSelf" value="Add itself" action="#{webBean1.addItSelf}"></ace:linkButton>
 			</h:panelGrid>
 		</ace:panel>
-		<ace:panel header="Register">
-			<ace:linkButton id="register" value="Registration" action="registration"></ace:linkButton>
-		</ace:panel>	
+		<ace:panel header="Register" rendered="#{!webBean1.loggedIn}">
+			<ice:panelGrid columns="2">
+				<ace:linkButton id="register" value="Registration" action="registration"></ace:linkButton>
+				<ace:linkButton id="login" value="Login" action="login"></ace:linkButton>
+			</ice:panelGrid>
+		</ace:panel>
+		
+		<ace:panel header="User: #{webBean1.loggedinCustomer.login}" rendered="#{webBean1.loggedIn}">
+			<ice:panelGrid columns="2">
+				<ace:linkButton id="cabinet" value="Cabinet" action="cabinet"></ace:linkButton>
+				<ace:linkButton id="logout" value="Logout" action="#{webBean1.logout}"></ace:linkButton>
+			</ice:panelGrid>
+		</ace:panel>
       </h:form>         
     </h:body>
 </html>

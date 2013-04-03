@@ -10,17 +10,6 @@
         <title>Customer Registration</title>
         <link rel="stylesheet" type="text/css" href="./xmlhttp/css/rime/rime.css"/>
     </h:head>
-<!-- 
-
-    private String street;
-    private String house;
-    private String appartment;
-    private String zipCode;
-    private String city;
-    private String country;
-
- -->
-
     <h:body styleClass="ice-skin-rime">     
        <h:form id="form">
 		<ace:panel header="Welcome to Registration: Customer Datas">
@@ -54,7 +43,10 @@
 			</h:panelGrid>
 		</ace:panel>
 		<ace:panel header="Register">
-			<ace:linkButton id="register" value="Register" action="#{customer.register}"></ace:linkButton>
+			<ice:panelGrid columns="2">
+				<ace:linkButton id="register" value="Register" action="#{customer.register}"></ace:linkButton>
+				<ace:linkButton id="cancel" value="Cancel" action="index" immediate="true"></ace:linkButton>
+			</ice:panelGrid>
 		</ace:panel>	
       </h:form>         
     </h:body>
