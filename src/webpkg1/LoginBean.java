@@ -8,6 +8,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import session.CustomerManager;
@@ -40,6 +42,11 @@ public class LoginBean implements Serializable {
 			customer = customerManager.checkLoginData(login, password);
 			if (customer != null) {
 				session.setAttribute("customer", customer);
+				
+				HttpServletResponse response = (HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
+				response.addCookie(new Cookie("login", login));
+				response.addCookie(new Cookie("password", password));
+				
 				webBean1.setLoggedIn(true);
 				webBean1.setLoggedinCustomer(customer);
 				return "index";
