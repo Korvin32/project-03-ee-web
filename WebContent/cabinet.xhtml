@@ -19,7 +19,9 @@
 				<ice:outputText   id ="login"    value="#{webBean1.loggedinCustomer.login}"/>
 				<ice:outputLabel for="password" value="Password"/>
 				<ice:outputText id ="password" value="#{webBean1.loggedinCustomer.password}"/>
-			
+			</h:panelGrid>
+			<hr></hr>
+			<h:panelGrid columns="4">
 				<ace:linkButton id="save" value="Save" action="#{login.doSave}"></ace:linkButton>
 				<ace:linkButton id="edit" value="Edit" action="#{login.doEdit}"></ace:linkButton>
 				<ace:linkButton id="cancel" value="Cancel" action="#{login.doCancel}"></ace:linkButton>
