@@ -24,11 +24,11 @@ public class LoginBean implements Serializable {
 	@EJB
 	private CustomerManager customerManager;
 	
-	private HttpSession session;
-	
 	@ManagedProperty(value="#{webBean1}")
 	private WebBean1 webBean1;
 
+	private HttpSession session;
+	
 	private String login;
 	private String password;
 	

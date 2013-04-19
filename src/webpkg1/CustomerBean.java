@@ -3,7 +3,7 @@ package webpkg1;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
@@ -12,7 +12,7 @@ import entity.Address;
 import entity.Customer;
 
 @ManagedBean(name="customer")
-@RequestScoped
+@ViewScoped
 public class CustomerBean {
 	
 	@EJB
