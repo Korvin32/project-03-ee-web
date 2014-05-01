@@ -17,7 +17,7 @@ import entity.Product;
 @SessionScoped
 public class WebBean1 implements Serializable {
 
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 6946899497510749792L;
 
 	@EJB
 	private ProductFacade productFacade;
@@ -25,6 +25,8 @@ public class WebBean1 implements Serializable {
 	private boolean loggedIn = false;
 	
 	private Customer loggedinCustomer;
+	
+	private boolean editCabinet = false;
 	
 	public WebBean1() {
 		System.out.println("Stateless Session Bean 'WebBean1' - constructed!");
@@ -79,4 +81,12 @@ public class WebBean1 implements Serializable {
 		this.loggedinCustomer = loggedinCustomer;
 	}
 	
+	public boolean isEditCabinet() {
+		return editCabinet;
+	}
+
+	public void setEditCabinet(boolean editCabinet) {
+		this.editCabinet = editCabinet;
+	}
+
 }

@@ -18,50 +18,37 @@
 		<ace:panel header="Welcome to Registration: Customer Datas">
 			<h:panelGrid columns="2">
 				<ice:outputLabel for="login" value="Login" />
-				<ice:inputText id="login" value="#{customer.customer.login}"
-					required="true" />
+				<ice:inputText id="login" value="#{customer.customer.login}" required="true" />
 				<ice:outputLabel for="password" value="Password" />
-				<ice:inputSecret id="password" value="#{customer.customer.password}"
-					required="true" redisplay="true" />
+				<ice:inputSecret id="password" value="#{customer.customer.password}" required="true" redisplay="true" />
 				<ice:outputLabel for="re-password" value="Re-Enter Password" />
-				<ice:inputSecret id="re-password" value="#{customer.rePassword}"
-					required="true" redisplay="true" />
+				<ice:inputSecret id="re-password" value="#{customer.rePassword}" required="true" redisplay="true" />
 				<ice:outputLabel for="phone" value="Phone" />
-				<ice:inputText id="phone" value="#{customer.customer.phone}"
-					required="true" />
+				<ice:inputText id="phone" value="#{customer.customer.phone}" required="true" />
 				<ice:outputLabel for="skype" value="Skype" />
-				<ice:inputText id="skype" value="#{customer.customer.skype}"
-					required="true" />
+				<ice:inputText id="skype" value="#{customer.customer.skype}" required="true" />
 			</h:panelGrid>
 		</ace:panel>
 		<ace:panel header="Welcome to Registration: Customer Address">
 			<h:panelGrid columns="2">
 				<ice:outputLabel for="street" value="Street" />
-				<ice:inputText id="street" value="#{customer.address.street}"
-					required="true" />
+				<ice:inputText id="street" value="#{customer.address.street}" required="true" />
 				<ice:outputLabel for="house" value="House" />
-				<ice:inputText id="house" value="#{customer.address.house}"
-					required="true" />
+				<ice:inputText id="house" value="#{customer.address.house}" required="true" />
 				<ice:outputLabel for="appartment" value="Appartment" />
-				<ice:inputText id="appartment"
-					value="#{customer.address.appartment}" required="true" />
+				<ice:inputText id="appartment" value="#{customer.address.appartment}" required="true" />
 				<ice:outputLabel for="zipCode" value="Zip Code" />
-				<ice:inputText id="zipCode" value="#{customer.address.zipCode}"
-					required="true" />
+				<ice:inputText id="zipCode" value="#{customer.address.zipCode}" required="true" />
 				<ice:outputLabel for="city" value="City" />
-				<ice:inputText id="city" value="#{customer.address.city}"
-					required="true" />
+				<ice:inputText id="city" value="#{customer.address.city}" required="true" />
 				<ice:outputLabel for="country" value="Country" />
-				<ice:inputText id="country" value="#{customer.address.country}"
-					required="true" />
+				<ice:inputText id="country" value="#{customer.address.country}" required="true" />
 			</h:panelGrid>
 		</ace:panel>
 		<ace:panel header="Register">
 			<ice:panelGrid columns="2">
-				<ace:linkButton id="register" value="Register"
-					action="#{customer.register}"></ace:linkButton>
-				<ace:linkButton id="cancel" value="Cancel" action="index"
-					immediate="true"></ace:linkButton>
+				<ace:linkButton id="register" value="Register" action="#{customer.register}"></ace:linkButton>
+				<ace:linkButton id="cancel" value="Cancel" action="index" immediate="true"></ace:linkButton>
 			</ice:panelGrid>
 		</ace:panel>
 	</h:form>

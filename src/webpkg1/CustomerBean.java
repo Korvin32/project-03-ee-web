@@ -1,5 +1,7 @@
 package webpkg1;
 
+import java.io.Serializable;
+
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
@@ -13,8 +15,10 @@ import entity.Customer;
 
 @ManagedBean(name="customer")
 @ViewScoped
-public class CustomerBean {
+public class CustomerBean implements Serializable {
 	
+	private static final long serialVersionUID = 5295720384108298190L;
+
 	@EJB
 	private CustomerManager customerManager;
 
