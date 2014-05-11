@@ -24,10 +24,10 @@
 			</h:panelGrid>
 			<hr></hr>
 			<h:panelGrid columns="3">
-				<ace:linkButton id="save" value="Save" action="#{login.doSave}" rendered="#{webBean1.editCabinet}"></ace:linkButton>
-				<ace:linkButton id="edit" value="Edit" action="#{login.doEdit}" rendered="#{!webBean1.editCabinet}"></ace:linkButton>
-				<ace:linkButton id="cancel" value="Cancel" action="#{login.doCancel}"></ace:linkButton>
-				<ace:linkButton id="back" value="Back" action="index" immediate="true"></ace:linkButton>
+				<ace:linkButton id="save"   value="Save"   action="#{login.doSave}"   rendered="#{webBean1.editCabinet}"></ace:linkButton>
+				<ace:linkButton id="edit"   value="Edit"   action="#{login.doEdit}"   rendered="#{!webBean1.editCabinet}"></ace:linkButton>
+				<ace:linkButton id="cancel" value="Cancel" action="#{login.doCancel}" rendered="#{webBean1.editCabinet}"></ace:linkButton>
+				<ace:linkButton id="back"   value="Back"   action="index" immediate="true"></ace:linkButton>
 			</h:panelGrid>
 		</ace:panel>
       </h:form>         
