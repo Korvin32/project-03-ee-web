@@ -3,7 +3,6 @@ package webpkg1;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -30,19 +29,6 @@ public class WebBean1 implements Serializable {
 		System.out.println("Stateless Session Bean 'WebBean1' - constructed!");
 	}
 	
-	@PostConstruct
-	public void init() {
-		System.out.println("[WebBean1] - init()");
-		Product product;
-		List<Product> products = productFacade.findAll();
-		if (products == null || products.isEmpty()) {
-			for (int i = 0; i < 10; i++) {
-				product = new Product("Prod" + i, "descr" + i);
-				productFacade.create(product);
-			}
-		}
-	}
-	
 	public void logout() {
 		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
 	}
@@ -51,12 +37,12 @@ public class WebBean1 implements Serializable {
 		List<Product> products = productFacade.findAll();
 		Product currentProduct = products.get(0);
 		Product similarProduct = products.get(1);
-		productFacade.addSimilarProduct(currentProduct, similarProduct);
+//		productFacade.addSimilarProduct(currentProduct, similarProduct);
 	}
 	
 	public void addItSelf() {
 		Product product = productFacade.find(new Integer(3));
-		productFacade.addSimilarProduct(product, product);
+//		productFacade.addSimilarProduct(product, product);
 	}
 	
 	public void action() {
