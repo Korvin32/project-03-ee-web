@@ -6,7 +6,7 @@ import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
@@ -16,10 +16,11 @@ import session.CustomerManager;
 import entity.Customer;
 
 @ManagedBean(name="login")
-@RequestScoped
+//@RequestScoped
+@ViewScoped
 public class LoginBean implements Serializable {
 
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -1076990188239204819L;
 
 	@EJB
 	private CustomerManager customerManager;
@@ -44,16 +45,15 @@ public class LoginBean implements Serializable {
 				session.setAttribute("customer", customer);
 				
 				HttpServletResponse response = (HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
-				response.addCookie(new Cookie("login", login));
-				response.addCookie(new Cookie("password", password));
+				response.addCookie(new Cookie("login", customer.getLogin()));
+				response.addCookie(new Cookie("password", customer.getPassword()));
 				
 				webBean1.setLoggedIn(true);
 				webBean1.setLoggedinCustomer(customer);
 				return "index";
-			} else {
-				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Unknown authentication error occurs! Please try again", null));
-				return null;
 			}
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Unknown authentication error occurs! Please try again", null));
+            return null;
 		} catch (Exception e) {
 			System.out.println("[LoginBean] - ERROR - Exception: " + e.getMessage());
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), null));
@@ -62,6 +62,31 @@ public class LoginBean implements Serializable {
 		
 	}
 
+	public void doEdit() {
+		webBean1.setEditCabinet(true);
+	}
+	
+	public void doCancel() {
+		webBean1.setEditCabinet(false);
+	}
+	
+	public void doSave() {
+		try {
+			Customer customer = (Customer) session.getAttribute("customer");
+			Customer newCustomer = customerManager.updateCustomerData(customer);
+			
+			session.setAttribute("customer", newCustomer);
+			HttpServletResponse response = (HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
+			response.addCookie(new Cookie("login", newCustomer.getLogin()));
+			response.addCookie(new Cookie("password", newCustomer.getPassword()));
+			
+			webBean1.setEditCabinet(false);
+		} catch (Exception e) {
+			System.out.println("[LoginBean] - ERROR - Exception: " + e.getMessage());
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), null));
+		}
+	}
+	
 	public WebBean1 getWebBean1() {
 		return webBean1;
 	}

@@ -14,17 +14,19 @@
 		<ace:panel header="Welcome to Your Cabinet: #{webBean1.loggedinCustomer.login}">
 			<h:panelGrid columns="2">
 			
-				<ice:outputLabel for="login"    value="Login"/>
-				<ice:outputText   id ="login"    value="#{webBean1.loggedinCustomer.login}"/>
-				<ice:outputLabel for="password" value="Password"/>
-				<ice:outputText id ="password" value="#{webBean1.loggedinCustomer.password}"/>
+				<ice:outputLabel  for="login"        value="Login"/>
+				<ice:outputText   id ="login"        value="#{webBean1.loggedinCustomer.login}"    rendered="#{!webBean1.editCabinet}"/>
+				<ice:inputText    id ="loginEdit"    value="#{webBean1.loggedinCustomer.login}"    rendered="#{webBean1.editCabinet}"/>
+				<ice:outputLabel  for="password"     value="Password"/>
+				<ice:outputText   id ="password"     value="#{webBean1.loggedinCustomer.password}" rendered="#{!webBean1.editCabinet}"/>
+				<ice:inputText    id ="passwordEdit" value="#{webBean1.loggedinCustomer.password}" rendered="#{webBean1.editCabinet}"/>
 			</h:panelGrid>
 			<hr></hr>
-			<h:panelGrid columns="4">
-				<ace:linkButton id="save" value="Save" action="#{login.doSave}"></ace:linkButton>
-				<ace:linkButton id="edit" value="Edit" action="#{login.doEdit}"></ace:linkButton>
-				<ace:linkButton id="cancel" value="Cancel" action="#{login.doCancel}"></ace:linkButton>
-				<ace:linkButton id="back" value="Back" action="index" immediate="true"></ace:linkButton>
+			<h:panelGrid columns="3">
+				<ace:linkButton id="save"   value="Save"   action="#{login.doSave}"   rendered="#{webBean1.editCabinet}"></ace:linkButton>
+				<ace:linkButton id="edit"   value="Edit"   action="#{login.doEdit}"   rendered="#{!webBean1.editCabinet}"></ace:linkButton>
+				<ace:linkButton id="cancel" value="Cancel" action="#{login.doCancel}" rendered="#{webBean1.editCabinet}"></ace:linkButton>
+				<ace:linkButton id="back"   value="Back"   action="index" immediate="true"></ace:linkButton>
 			</h:panelGrid>
 		</ace:panel>
       </h:form>         
