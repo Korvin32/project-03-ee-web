@@ -51,10 +51,9 @@ public class LoginBean implements Serializable {
 				webBean1.setLoggedIn(true);
 				webBean1.setLoggedinCustomer(customer);
 				return "index";
-			} else {
-				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Unknown authentication error occurs! Please try again", null));
-				return null;
 			}
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Unknown authentication error occurs! Please try again", null));
+            return null;
 		} catch (Exception e) {
 			System.out.println("[LoginBean] - ERROR - Exception: " + e.getMessage());
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), null));

@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>project-3-ee-web</name>
+	<name>project-03-ee-web</name>
 	<comment></comment>
 	<projects>
 	</projects>
 	<buildSpec>
+		<buildCommand>
+			<name>tern.eclipse.ide.core.ternBuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
 		<buildCommand>
 			<name>org.eclipse.wst.jsdt.core.javascriptValidator</name>
 			<arguments>
@@ -53,7 +58,7 @@
 	<variableList>
 		<variable>
 			<name>JBOSS_HOME</name>
-			<value>file:/C:/Programme/JBossAS/jboss-as-7.1.1.Final</value>
+			<value>file:/C:/Programmex86/JBossAS/wildfly-8.2.0.Final</value>
 		</variable>
 	</variableList>
 </projectDescription>

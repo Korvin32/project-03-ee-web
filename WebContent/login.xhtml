@@ -1,30 +1,27 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:icecore="http://www.icefaces.org/icefaces/core"  xmlns:ace="http://www.icefaces.org/icefaces/components"   xmlns:ice="http://www.icesoft.com/icefaces/component" 
-	>
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html">
     <h:head>
         <title>ICEfaces</title>
         <link rel="stylesheet" type="text/css" href="./xmlhttp/css/rime/rime.css"/>
     </h:head>
     <h:body styleClass="ice-skin-rime">     
-       <ice:form id="login_form">
-	       <icecore:singleSubmit/>
-			<ace:panel header="Welcome to ICEfaces: Login">
-				<h:panelGrid columns="2">
-				
-					<ice:outputLabel for="login" value="Login"/>
-					<ice:inputText	 id ="login" value="#{login.login}"			required="true" placeholder="User name"/>
-					<ice:outputLabel for="password" value="Password"/>
-					<ice:inputSecret id ="password" value="#{login.password}"	required="true" redisplay="true"/>
-				
-					<ace:linkButton id="doLogin" value="Login" action="#{login.doLogin}"></ace:linkButton>
-					<ace:linkButton id="back" value="Back" action="index" immediate="true"></ace:linkButton>
-				</h:panelGrid>
-			</ace:panel>
+       <ice:form id="login_form" autocomplete="true">
+		<ace:panel header="Welcome to ICEfaces: Login">
+			<h:panelGrid columns="2">
+			
+				<ice:outputLabel for="login" value="Login"/>
+				<ice:inputText	 id ="login" value="#{login.login}"			required="true" placeholder="User name" autocomplete="true"/>
+				<ice:outputLabel for="password" value="Password"/>
+				<ice:inputSecret id ="password" value="#{login.password}"	required="true" redisplay="true"/>
+			
+				<ace:linkButton id="doLogin" value="Login" action="#{login.doLogin}"></ace:linkButton>
+				<ace:linkButton id="back" value="Back" action="index" immediate="true"></ace:linkButton>
+			</h:panelGrid>
+		</ace:panel>
       </ice:form>         
     </h:body>
 </html>

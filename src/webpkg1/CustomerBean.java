@@ -47,9 +47,8 @@ public class CustomerBean implements Serializable {
 			webBean1.setLoggedIn(true);
 			webBean1.setLoggedinCustomer(customer);
 			return "index";
-		} else {
-			return "error";
 		}
+        return "error";
 	}
 
 	public WebBean1 getWebBean1() {

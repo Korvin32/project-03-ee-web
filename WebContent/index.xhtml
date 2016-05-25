@@ -1,37 +1,69 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:icecore="http://www.icefaces.org/icefaces/core"  xmlns:ace="http://www.icefaces.org/icefaces/components"   xmlns:ice="http://www.icesoft.com/icefaces/component" 
-	>
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html">
+    
     <h:head>
-        <title>ICEfaces</title>
-        <link rel="stylesheet" type="text/css" href="./xmlhttp/css/rime/rime.css"/>
+        <title>JSF 2.2</title>
     </h:head>
-    <h:body styleClass="ice-skin-rime">     
+    <h:body>     
        <h:form id="form">
-		<ace:panel header="Welcome to ICEfaces">
+		<h:panelGroup layout="block">
+			<f:facet name="header">Welcome to JSF 2.2</f:facet>
 			<h:panelGrid columns="1">
-				<ace:linkButton id="callBean" value="Call Web Bean 1" action="#{webBean1.action}"></ace:linkButton>
-				<ace:linkButton id="addSimilarity" value="Add similar Product" action="#{webBean1.addSimilarProduct}"></ace:linkButton>
-				<ace:linkButton id="addSelf" value="Add itself" action="#{webBean1.addItSelf}"></ace:linkButton>
+				<h:commandButton action="#{webBean1.action}" value="Call Web Bean 1" id="callBean"/>
+				<h:commandButton id="addSimilarity" value="Add similar Product" action="#{webBean1.addSimilarProduct}"/>
+				<h:commandButton id="addSelf" value="Add itself" action="#{webBean1.addItSelf}"/>
 			</h:panelGrid>
-		</ace:panel>
-		<ace:panel header="Register" rendered="#{!webBean1.loggedIn}">
-			<ice:panelGrid columns="2">
-				<ace:linkButton id="register" value="Registration" action="registration"></ace:linkButton>
-				<ace:linkButton id="login" value="Login" action="login"></ace:linkButton>
-			</ice:panelGrid>
-		</ace:panel>
+		</h:panelGroup>
+		<h:panelGroup layout="block" rendered="#{!webBean1.loggedIn}">
+			<f:facet name="header">Register</f:facet>
+			<h:panelGrid columns="2">
+				<h:commandButton id="register" value="Registration" action="registration"/>
+				<h:commandButton id="login" value="Login" action="login"/>
+			</h:panelGrid>
+		</h:panelGroup>
 		
-		<ace:panel header="User: #{webBean1.loggedinCustomer.login}" rendered="#{webBean1.loggedIn}">
-			<ice:panelGrid columns="2">
-				<ace:linkButton id="cabinet" value="Cabinet" action="cabinet"></ace:linkButton>
-				<ace:linkButton id="logout" value="Logout" action="#{webBean1.logout}"></ace:linkButton>
-			</ice:panelGrid>
-		</ace:panel>
+		<h:panelGroup layout="block" rendered="#{webBean1.loggedIn}">
+			<f:facet name="header">User: #{webBean1.loggedinCustomer.login}</f:facet>
+			<h:panelGrid columns="2">
+				<h:commandButton id="cabinet" value="Cabinet" action="cabinet"/>
+				<h:commandButton id="logout" value="Logout" action="#{webBean1.logout}"/>
+			</h:panelGrid>
+		</h:panelGroup>
+      </h:form>
+      
+      <h:form id="form2">
+      	<h:dataTable value="#{productsStore.products}" var="product">
+      		<f:facet name="header">Products</f:facet>
+      		
+			<h:column id="name">
+				<f:facet name="header">Name</f:facet>
+				#{product.name}
+			</h:column>
+			
+			<h:column id="description">
+				<f:facet name="header">Description</f:facet>
+				#{product.description}
+			</h:column>
+			
+			<h:column id="images">
+				<f:facet name="header">Images</f:facet>
+				<ul>
+					<ui:repeat var="image" value="#{product.images}">
+						<li style="display:inline;">
+							<h:graphicImage url="#{image.url}" alt="#{image.imagePath}" width="40" height="40" />
+						</li>
+					</ui:repeat>
+				</ul>
+			</h:column>
+			
+      	</h:dataTable>
+					
       </h:form>         
+		               
+
     </h:body>
 </html>
