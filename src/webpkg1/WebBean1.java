@@ -8,6 +8,9 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import session.ProductFacade;
 import entity.Customer;
 import entity.Product;
@@ -15,9 +18,11 @@ import entity.Product;
 @ManagedBean
 @SessionScoped
 public class WebBean1 implements Serializable {
-
+    
 	private static final long serialVersionUID = 6946899497510749792L;
 
+	private static final Logger LOG = LoggerFactory.getLogger(WebBean1.class);
+	
 	@EJB
 	private ProductFacade productFacade;
 	
@@ -28,7 +33,7 @@ public class WebBean1 implements Serializable {
 	private boolean editCabinet = false;
 	
 	public WebBean1() {
-		System.out.println("Stateless Session Bean 'WebBean1' - constructed!");
+		LOG.info("Stateless Session Bean 'WebBean1' - constructed!");
 	}
 	
 	public void logout() {
@@ -48,7 +53,7 @@ public class WebBean1 implements Serializable {
 	}
 	
 	public void action() {
-		System.out.println("action called!");
+	    LOG.info("action called!");
 	}
 
 	public boolean isLoggedIn() {

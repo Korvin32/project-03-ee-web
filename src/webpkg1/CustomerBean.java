@@ -1,5 +1,8 @@
 package webpkg1;
 
+import static webpkg1.Constants.ERROR;
+import static webpkg1.Constants.INDEX;
+
 import java.io.Serializable;
 
 import javax.ejb.EJB;
@@ -17,7 +20,7 @@ import entity.Customer;
 @ViewScoped
 public class CustomerBean implements Serializable {
 	
-	private static final long serialVersionUID = 5295720384108298190L;
+    private static final long serialVersionUID = 5295720384108298190L;
 
 	@EJB
 	private CustomerManager customerManager;
@@ -46,9 +49,9 @@ public class CustomerBean implements Serializable {
 			session.setAttribute("customer", customer);
 			webBean1.setLoggedIn(true);
 			webBean1.setLoggedinCustomer(customer);
-			return "index";
+			return INDEX;
 		}
-        return "error";
+        return ERROR;
 	}
 
 	public WebBean1 getWebBean1() {

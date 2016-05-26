@@ -1,5 +1,7 @@
 package webpkg1;
 
+import static webpkg1.Constants.INDEX;
+
 import java.io.Serializable;
 
 import javax.ejb.EJB;
@@ -12,6 +14,9 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import session.CustomerManager;
 import entity.Customer;
 
@@ -22,6 +27,8 @@ public class LoginBean implements Serializable {
 
 	private static final long serialVersionUID = -1076990188239204819L;
 
+    private static final Logger LOG = LoggerFactory.getLogger(LoginBean.class);
+    
 	@EJB
 	private CustomerManager customerManager;
 	
@@ -50,12 +57,12 @@ public class LoginBean implements Serializable {
 				
 				webBean1.setLoggedIn(true);
 				webBean1.setLoggedinCustomer(customer);
-				return "index";
+				return INDEX;
 			}
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Unknown authentication error occurs! Please try again", null));
             return null;
 		} catch (Exception e) {
-			System.out.println("[LoginBean] - ERROR - Exception: " + e.getMessage());
+			LOG.error("Exception: " + e.getMessage());
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), null));
 			return null;
 		}
@@ -67,7 +74,12 @@ public class LoginBean implements Serializable {
 	}
 	
 	public void doCancel() {
-		webBean1.setEditCabinet(false);
+	    webBean1.setEditCabinet(false);
+	}
+	
+	public String doBack() {
+	    webBean1.setEditCabinet(false);
+	    return INDEX;
 	}
 	
 	public void doSave() {
@@ -82,7 +94,7 @@ public class LoginBean implements Serializable {
 			
 			webBean1.setEditCabinet(false);
 		} catch (Exception e) {
-			System.out.println("[LoginBean] - ERROR - Exception: " + e.getMessage());
+			LOG.error("Exception: " + e.getMessage());
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), null));
 		}
 	}
